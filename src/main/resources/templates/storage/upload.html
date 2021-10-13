@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+    <meta charset="utf-8"/>
+    <title>Upload File</title>
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.css" />
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Upload File</h1>
+    <form th:action="@{/disk/upload}" th:method="post" encType="multipart/form-data">
+        <div class="form-group">
+            <label for="multipart" class="form-label">Файл</label>
+            <input type="file" class="form-control-file" name="multipart" id="multipart" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload</button>
+    </form>
+</div>
+</body>
+</html>

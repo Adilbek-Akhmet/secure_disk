@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layout}">
+<head>
+  <meta charset="utf-8"/>
+  <title>Disk</title>
+  <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.css" />
+</head>
+<body>
+<div layout:fragment="content">
+  <h1>Secure Disk</h1>
+  <div class="mb-1">
+    <a class="btn btn-dark" th:href="@{/disk/upload}">Upload</a>
+  </div>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>File Name</th>
+      <th>Size</th>
+      <th>Created At</th>
+      <th>Download</th>
+      <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="file : ${files}">
+      <td th:text="${file.getFileName()}"></td>
+      <td th:text="${file.getSize()}"></td>
+      <td th:text="${file.getCreatedAt()}"></td>
+      <td>
+        <a th:href="@{/disk/download/{id}(id=${file.getId()})}">
+          Download
+        </a>
+      </td>
+      <td>
+        <a th:href="@{/disk/delete/{id}(id=${file.getId()})}">
+          Delete
+        </a>
+      </td>
+    </tr>
+    <tr th:if="${files == null}">
+      <td colspan="3">No Files!</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
